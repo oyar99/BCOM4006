@@ -7,6 +7,14 @@ using namespace std;
 
 const int MAX_LENGTH_LINE_OUTPUT = 60;
 
+/*
+ * Este programa recibe un archivo FASTA con secuencias biológicas y retorna otro archivo fasta
+ * donde se han depurado las secuencias repetidas y se ha formateado el archivo para que todas
+ * las secuencias tengan por linea un tamaño máximo recomendable.
+ * 
+ * Para los archivos ejemplos usados se puede observar que el archivo de entrada contiene 72 secuencias, y
+ * al pasar el archivo por este algoritmo resultan haber 65 secuencias únicas.
+ */
 int main() {
     unordered_set<string> sequences; // Mapa para indexar secuencias biológicas
     vector<string> output;
@@ -30,7 +38,7 @@ int main() {
     };
 
     while (!cin.eof()) {
-        string line; cin >> line;
+        string line; getline(cin, line);
 
         if (isHeader(line)) {
             appendCurrentSequence(line);
@@ -44,15 +52,15 @@ int main() {
     for (const auto& line: output) {
         if (!isHeader(line)) {
             for (int i = 0; i < line.size(); ++i) {
-                if (i % MAX_LENGTH_LINE_OUTPUT == 0 || i == line.size() - 1) {
+                cout << line[i];
+
+                if ((i+1) % MAX_LENGTH_LINE_OUTPUT == 0 || i == line.size() - 1) {
                     // Para el formato fasta es recomendable no tener mas de 80 caracteres por linea
                     cout << endl;
                 }
-
-                cout << line[i];
             }
         } else {
-            cout << line;
+            cout << line << endl;
         }
     }
 }
