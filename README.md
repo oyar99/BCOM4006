@@ -13,3 +13,9 @@ genomas
 3. Practicar una implementación de grafos dirigidos
 
 # ¿Cómo correr el código?
+
+Para Kmers:
+
+(`git checkout -b feature/AmazingFeature`)
+
+Para Overlap

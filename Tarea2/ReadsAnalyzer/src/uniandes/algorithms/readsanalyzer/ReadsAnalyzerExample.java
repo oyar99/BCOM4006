@@ -28,7 +28,7 @@ public class ReadsAnalyzerExample {
 	 * @throws Exception If the reads can not be loaded
 	 */
 	public static void main(String[] args) throws Exception {
-		if(args.length<2) {
+	if(args.length<2) {
 			System.err.println("Command and input file are mandatory parameters");
 			return;
 		}
@@ -36,9 +36,15 @@ public class ReadsAnalyzerExample {
 		int minOverlap = 1;
 		String command = args[0];
 
+		//String command = "Kmers";
+
 		String fastqFilename = args[1];
 
+		//String fastqFilename = "/Users/juanitapuentes/Downloads/ISIS4006/Tarea2/ReadsAnalyzer/data/test50x.fastq";
+
 		String basePath = args[3];
+
+		//String basePath = "/Users/juanitapuentes/Downloads/resultsAlgoritmos/";
 		
 		if(COMMAND_OVERLAP.equals(command)&& args.length>2) {
 			minOverlap = Integer.parseInt(args[2]);
@@ -62,11 +68,11 @@ public class ReadsAnalyzerExample {
 			for(String sequence:sequencesList) System.out.println("The sequence: "+sequence+" is present "+graph.getSequenceAbundance(sequence)+" times");
 			System.out.println("Abundances distribution");
 
-			Path fullPath_abundance = Paths.get(basePath, "abundance.txt");
+			Path fullPath_abundance = Paths.get(basePath, "abundance_overlapping.txt");
 			Path fullPath_overlapping = Paths.get(basePath, "overlapping.txt");
 			
 			try {
-			    FileWriter fileWriter = new FileWriter(fullPath_abundance);
+			    FileWriter fileWriter = new FileWriter(fullPath_abundance.toFile());
 			    
 			    int [] distribution = graph.calculateAbundancesDistribution();
 				for(int i=1;i<distribution.length;i++) {
@@ -85,7 +91,7 @@ public class ReadsAnalyzerExample {
 			
 			
 			try {
-			    FileWriter fileWriter = new FileWriter(fullPath_overlapping);
+			    FileWriter fileWriter = new FileWriter(fullPath_overlapping.toFile());
 			    
 			    System.out.println("Overlap distribution");
 				int [] ovdist = graph.calculateOverlapDistribution();
@@ -126,9 +132,13 @@ public class ReadsAnalyzerExample {
 			Set<String> kmers = kmersTable.getDistinctKmers();
 			System.out.println("Total number of k-mers: "+kmers.size());
 			
+			Path fullPath_abundance_kmers = Paths.get(basePath, "abundance_kmers.txt");
+			Path fullPath_distribution_kmers = Paths.get(basePath, "distribution_kmers.txt");
+			
 			
 			try {
-			    FileWriter fileWriter = new FileWriter("/Users/juanitapuentes/Desktop/Decimo Semestre/Algoritmos Biologia Computacional/Tareas/Tarea2/ISIS4006/Tarea2/ReadsAnalyzer/Results/kmers/100x/kmer_data_75.txt");
+				
+			    FileWriter fileWriter = new FileWriter(fullPath_abundance_kmers.toFile());
 			    
 			    System.out.println("Abundance distribution");
 				
@@ -152,7 +162,7 @@ public class ReadsAnalyzerExample {
 			
 			
 			try {
-			    FileWriter fileWriter = new FileWriter("/Users/juanitapuentes/Desktop/Decimo Semestre/Algoritmos Biologia Computacional/Tareas/Tarea2/ISIS4006/Tarea2/ReadsAnalyzer/Results/kmers/100x/kmer_distribution_75.txt");
+			    FileWriter fileWriter = new FileWriter(fullPath_distribution_kmers.toFile());
 			    
 			    System.out.println("Distribution");
 				
