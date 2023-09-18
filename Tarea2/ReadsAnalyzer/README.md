@@ -66,3 +66,9 @@ Donde los argumentos son:
 `args[3]` -> Porcentaje de error para generar lecturas con ciertos errors mas alineadas a lo que se obtiene con secuencacion de ADN
 
 Para ambos casos se deben ejecutar estos comandos desde la raiz del proyecto.
+
+
+
+## ADICIONALES
+
+La carpeta [Results](https://github.com/oyar99/ISIS4006/tree/main/Tarea2/ReadsAnalyzer/Results) incluye todos los archivos .txt de las distribuciones y abundancias. La carpeta [Plots](https://github.com/oyar99/ISIS4006/tree/main/Tarea2/ReadsAnalyzer/Results/Plots) incluye las graficas generadas. El script [plots.py]([http://157.253.243.19/PLA-Net/](https://github.com/oyar99/ISIS4006/blob/main/Tarea2/ReadsAnalyzer/plots/plots_kmers.py)https://github.com/oyar99/ISIS4006/blob/main/Tarea2/ReadsAnalyzer/plots/plots_kmers.py) contiene el código empleado para realizar las graficas en Python.
