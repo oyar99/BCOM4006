@@ -1,4 +1,4 @@
-'''import os
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -94,10 +94,6 @@ path =os.path.join(generalpath, "Results", "Plots","kmer_distributions_tam_75.pn
 plt.savefig(path)
 plt.show()
 
-'''
-
-'''
-
 
 
 script_directory = os.path.dirname(os.path.abspath(__file__))
@@ -140,10 +136,6 @@ path =os.path.join(generalpath, "Results", "Plots", "overlapping_50x.png")
 #plt.savefig(path)
 #plt.show()'''
 
-
-import os
-import pandas as pd
-import matplotlib.pyplot as plt
 
 script_directory = os.path.dirname(os.path.abspath(__file__))
 generalpath =  os.path.dirname(script_directory)
