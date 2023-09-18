@@ -23,11 +23,11 @@ Se debe ejecutar el siguiente comando.
 
 ## Windows
 
-java -Xmx4g -cp lib\NGSEPcore_3.2.0.jar;bin uniandes.algorithms.readsanalyzer.ReadsAnalyzerExample "Overlap" "<Ruta de archivo de entrada>" 10
+`java -Xmx4g -cp lib\NGSEPcore_3.2.0.jar;bin uniandes.algorithms.readsanalyzer.ReadsAnalyzerExample "Overlap" "<Ruta de archivo de entrada>" 10`
 
 ## Mac
 
-java -Xmx4g -cp lib/NGSEPcore_3.2.0.jar:bin uniandes.algorithms.readsanalyzer.ReadsAnalyzerExample "Overlap" "<Ruta de archivo de entrada>" 10
+`java -Xmx4g -cp lib/NGSEPcore_3.2.0.jar:bin uniandes.algorithms.readsanalyzer.ReadsAnalyzerExample "Overlap" "<Ruta de archivo de entrada>" 10`
 
 Donde los argumentos son:
 
@@ -41,11 +41,11 @@ Para ejecutar el script de *SimpleReadsSimulator.java*, el cual genera ejemplos 
 
 ## Windows
 
-java -Xmx4g -cp lib\NGSEPcore_3.2.0.jar;bin uniandes.algorithms.readsanalyzer.SimpleReadsSimulator "data\HS_MIT.fasta" 100 20 "<Ruta de archivo de salida>" 1.0
+`java -Xmx4g -cp lib\NGSEPcore_3.2.0.jar;bin uniandes.algorithms.readsanalyzer.SimpleReadsSimulator "data\HS_MIT.fasta" 100 20 "<Ruta de archivo de salida>" 1.0`
 
 ## Mac
 
-java -Xmx4g -cp lib/NGSEPcore_3.2.0.jar:bin uniandes.algorithms.readsanalyzer.SimpleReadsSimulator "data\HS_MIT.fasta" 100 20 "<Ruta de archivo de salida>" 1.0
+`java -Xmx4g -cp lib/NGSEPcore_3.2.0.jar:bin uniandes.algorithms.readsanalyzer.SimpleReadsSimulator "data\HS_MIT.fasta" 100 20 "<Ruta de archivo de salida>" 1.0`
 
 Donde los argumentos son:
 
