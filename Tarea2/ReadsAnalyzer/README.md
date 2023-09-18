@@ -31,9 +31,12 @@ Se debe ejecutar el siguiente comando.
 
 Donde los argumentos son:
 
-args[0] -> Funcionalidad a ejecutar: "Overlap" o "Kmers"
-args[1] -> Archivo con las lecturas a analizar en formato fastq
-args[2] -> Parámetro opcional. Para el comando “Overlap” permite cambiar el sobrelape mínimo. Para el comando “Kmers”, permite cambiar el tamaño del k-mer
+`args[0]` -> Funcionalidad a ejecutar: "Overlap" o "Kmers"
+
+`args[1]` -> Archivo con las lecturas a analizar en formato fastq
+
+`args[2]` -> Parámetro opcional. Para el comando “Overlap” permite cambiar el sobrelape mínimo. Para el comando “Kmers”, permite cambiar el tamaño del k-mer
+
 
 ---
 
@@ -49,9 +52,12 @@ Para ejecutar el script de *SimpleReadsSimulator.java*, el cual genera ejemplos 
 
 Donde los argumentos son:
 
-args[0] -> Archivo de entrada en formato fasta
-args[1] -> Tamano de las secuencias de lectura a simular
-args[2] -> Numero de lecturas a simular
-args[3] -> Porcentaje de error para generar lecturas con ciertos errors mas alineadas a lo que se obtiene con secuencacion de ADN
+`args[0]` -> Archivo de entrada en formato fasta
+
+`args[1]` -> Tamano de las secuencias de lectura a simular
+
+`args[2]` -> Numero de lecturas a simular
+
+`args[3]` -> Porcentaje de error para generar lecturas con ciertos errors mas alineadas a lo que se obtiene con secuencacion de ADN
 
 Para ambos casos se deben ejecutar estos comandos desde la raiz del proyecto.
