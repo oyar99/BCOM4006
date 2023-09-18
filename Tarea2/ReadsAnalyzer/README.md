@@ -31,11 +31,16 @@ Se debe ejecutar el siguiente comando.
 
 Donde los argumentos son:
 
-`args[0]` -> Funcionalidad a ejecutar: "Overlap" o "Kmers"
 
-`args[1]` -> Archivo con las lecturas a analizar en formato fastq
+# ¿Cómo correr el código?
 
-`args[2]` -> Parámetro opcional. Para el comando “Overlap” permite cambiar el sobrelape mínimo. Para el comando “Kmers”, permite cambiar el tamaño del k-mer
+`args[0]` **->** Comando a ejecutar. Puede ser **"Overlap"** o **"Kmers"**. 
+
+`args[1]` **->** Path al archivo Fastq con las lecturas a procesar. 
+
+`args[2]`  **->**  _Opcional_. Para **"Overlap"** es la longitud mínima de solapamiento. Para **"Kmers"** es la longitud de k-meros.
+
+`args[3]` **->**  Path de base donde se guardaran los archivos .txt de abundancias y distribuciones. **Nota: Asegurese que esta carpeta ya exista en su máquina local**
 
 
 ---
