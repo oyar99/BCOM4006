@@ -14,8 +14,19 @@ genomas
 
 # ¿Cómo correr el código?
 
-Para Kmers:
+`args[0]` **->** Comando a ejecutar. Puede ser **"Overlap"** o **"Kmers"**. 
 
-(`git checkout -b feature/AmazingFeature`)
+`args[1]` **->** Path al archivo Fastq con las lecturas a procesar. 
 
-Para Overlap
+`args[2]`  **->**  _Opcional_. Para **"Overlap"** es la longitud mínima de solapamiento. Para **"Kmers"** es la longitud de k-meros.
+
+`args[3]` **->**  Path de base donde se guardaran los archivos .txt de abundancias y distribuciones. **Nota: Asegurese que esta carpeta ya exista en su máquina local**
+
+
+Para ejecutar el código
+
+
+
+# ADICIONALES
+
+La carpeta Results presenta los archivos .txt con las abundancias y distribuciones para cada experimento. En 
