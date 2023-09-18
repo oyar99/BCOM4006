@@ -30,10 +30,10 @@ public class SimpleReadsSimulator {
 		int readLength = 100;
 		//int numReads = Integer.parseInt(args[2]);
 		int numReads = 20;
-		//String outFile = args[3];
-		String outFile = "C:\\Users\\laura\\OneDrive\\Documentos\\GitHub\\ALGORITMOS\\ISIS4006\\Tarea2\\ReadsAnalyzer\\data\\HS_MIT_"+String.valueOf(readLength)+"_"+String.valueOf(numReads)+"_errorRate_out.fastq";
 		//double errorRate = Double.parseDouble(args[4]);
-		double errorRate = 0.2;
+		double errorRate = 1.0;
+		String outFile = "C:\\Users\\laura\\OneDrive\\Documentos\\GitHub\\ALGORITMOS\\ISIS4006\\Tarea2\\ReadsAnalyzer\\data\\HS_MIT_"+String.valueOf(readLength)+"_"+String.valueOf(numReads)+"_"+String.valueOf(errorRate)+"_out.fastq";
+		//String outFile = args[3];
 		FastaSequencesHandler handler = new FastaSequencesHandler();
 		handler.setSequenceType(StringBuilder.class);
 		QualifiedSequenceList sequences = handler.loadSequences(filename);
@@ -73,8 +73,9 @@ public class SimpleReadsSimulator {
 	// Función para introducir errores aleatorios
     private static String introduceRandomErrors(String sequence, double errorRate) {
         StringBuilder secuenciaModif = new StringBuilder(sequence);
-        Random random = new Random();
+        
         for (int i = 0; i < sequence.length(); i++) {
+			Random random = new Random();
             if (random.nextDouble() < errorRate) {
                 char randomBase = getRandomBase(sequence.charAt(i));
                 secuenciaModif.setCharAt(i, randomBase);
