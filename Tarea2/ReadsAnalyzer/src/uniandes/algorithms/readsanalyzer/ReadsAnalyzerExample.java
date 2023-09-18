@@ -27,25 +27,23 @@ public class ReadsAnalyzerExample {
 	 * @throws Exception If the reads can not be loaded
 	 */
 	public static void main(String[] args) throws Exception {
-		//if(args.length<2) {
-		//	System.err.println("Command and input file are mandatory parameters");
-		//	return;
-		//}
+		if(args.length<2) {
+			System.err.println("Command and input file are mandatory parameters");
+			return;
+		}
 		int kmerSize = 75;
 		int minOverlap = 1;
-		//String command = args[0];
-		String command = "Kmers";
-		//String fastqFilename = args[1];
-		String fastqFilename = "/Users/juanitapuentes/Desktop/Decimo Semestre/Algoritmos Biologia Computacional/ISIS4006/Tarea2/ReadsAnalyzer/data/test50x.fastq";
+		String command = args[0];
+
+		String fastqFilename = args[1];
+		
 		if(COMMAND_OVERLAP.equals(command)&& args.length>2) {
-			//minOverlap = Integer.parseInt(args[2]);
+			minOverlap = Integer.parseInt(args[2]);
 			
-			minOverlap = 10;
-			
+	
 		} else if(COMMAND_KMERS.equals(command) && args.length>2) {
-			//kmerSize = Integer.parseInt(args[2]);
+			kmerSize = Integer.parseInt(args[2]);
 			
-			kmerSize = 10;
 		}
 		
 		if(COMMAND_OVERLAP.equals(command)) {
