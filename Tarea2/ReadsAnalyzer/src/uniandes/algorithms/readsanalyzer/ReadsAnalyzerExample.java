@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import java.io.FileWriter;
 
+import java.nio.file.*;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -36,6 +37,8 @@ public class ReadsAnalyzerExample {
 		String command = args[0];
 
 		String fastqFilename = args[1];
+
+		String basePath = args[3];
 		
 		if(COMMAND_OVERLAP.equals(command)&& args.length>2) {
 			minOverlap = Integer.parseInt(args[2]);
@@ -58,10 +61,12 @@ public class ReadsAnalyzerExample {
 			
 			for(String sequence:sequencesList) System.out.println("The sequence: "+sequence+" is present "+graph.getSequenceAbundance(sequence)+" times");
 			System.out.println("Abundances distribution");
-			
+
+			Path fullPath_abundance = Paths.get(basePath, "abundance.txt");
+			Path fullPath_overlapping = Paths.get(basePath, "overlapping.txt");
 			
 			try {
-			    FileWriter fileWriter = new FileWriter("/Users/juanitapuentes/Desktop/Decimo Semestre/Algoritmos Biologia Computacional/Tareas/Tarea2/ISIS4006/Tarea2/ReadsAnalyzer/Results/Overlap/10x/abundance_xx.txt");
+			    FileWriter fileWriter = new FileWriter(fullPath_abundance);
 			    
 			    int [] distribution = graph.calculateAbundancesDistribution();
 				for(int i=1;i<distribution.length;i++) {
@@ -80,7 +85,7 @@ public class ReadsAnalyzerExample {
 			
 			
 			try {
-			    FileWriter fileWriter = new FileWriter("/Users/juanitapuentes/Desktop/Decimo Semestre/Algoritmos Biologia Computacional/Tareas/Tarea2/ISIS4006/Tarea2/ReadsAnalyzer/Results/Overlap/10x/overlapping_xx.txt");
+			    FileWriter fileWriter = new FileWriter(fullPath_overlapping);
 			    
 			    System.out.println("Overlap distribution");
 				int [] ovdist = graph.calculateOverlapDistribution();
