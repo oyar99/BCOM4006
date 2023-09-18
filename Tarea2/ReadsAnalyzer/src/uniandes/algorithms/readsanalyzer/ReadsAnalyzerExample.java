@@ -1,6 +1,10 @@
 package uniandes.algorithms.readsanalyzer;
 
 import java.io.IOException;
+
+import java.io.FileWriter;
+
+
 import java.util.Iterator;
 import java.util.Set;
 
@@ -23,20 +27,25 @@ public class ReadsAnalyzerExample {
 	 * @throws Exception If the reads can not be loaded
 	 */
 	public static void main(String[] args) throws Exception {
-		if(args.length<2) {
-			System.err.println("Command and input file are mandatory parameters");
-			return;
-		}
+		//if(args.length<2) {
+		//	System.err.println("Command and input file are mandatory parameters");
+		//	return;
+		//}
 		int kmerSize = 75;
 		int minOverlap = 1;
-		String command = args[0];
-		//String command = "Overlap";
-		String fastqFilename = args[1];
-		//String fastqFilename = "C:\\Users\\laura\\OneDrive\\Documentos\\GitHub\\ALGORITMOS\\ISIS4006\\Tarea2\\ReadsAnalyzer\\data\\HS_MIT_100_20_errorRate_out.fastq";
+		//String command = args[0];
+		String command = "Kmers";
+		//String fastqFilename = args[1];
+		String fastqFilename = "/Users/juanitapuentes/Desktop/Decimo Semestre/Algoritmos Biologia Computacional/ISIS4006/Tarea2/ReadsAnalyzer/data/test50x.fastq";
 		if(COMMAND_OVERLAP.equals(command)&& args.length>2) {
-			minOverlap = Integer.parseInt(args[2]);
+			//minOverlap = Integer.parseInt(args[2]);
+			
+			minOverlap = 10;
+			
 		} else if(COMMAND_KMERS.equals(command) && args.length>2) {
-			kmerSize = Integer.parseInt(args[2]);
+			//kmerSize = Integer.parseInt(args[2]);
+			
+			kmerSize = 10;
 		}
 		
 		if(COMMAND_OVERLAP.equals(command)) {
@@ -45,24 +54,55 @@ public class ReadsAnalyzerExample {
 			OverlapGraph graph = new OverlapGraph (minOverlap);
 			processFastq(fastqFilename, graph);
 			time = System.currentTimeMillis()-time;
-			System.out.println("Time building overlap graph(ms): "+time);
 			
 			//Calculate statistics
 			Set<String> sequencesList = graph.getDistinctSequences();
-			System.out.println("Number of distinct sequences: "+sequencesList.size());
+			
 			for(String sequence:sequencesList) System.out.println("The sequence: "+sequence+" is present "+graph.getSequenceAbundance(sequence)+" times");
 			System.out.println("Abundances distribution");
-			int [] distribution = graph.calculateAbundancesDistribution();
-			for(int i=1;i<distribution.length;i++) {
-				System.out.println(""+i+"\t"+distribution[i]);
-			}
-			System.out.println("Overlap distribution");
-			int [] ovdist = graph.calculateOverlapDistribution();
-			for(int i=0;i<ovdist.length;i++) {
-				System.out.println(""+i+"\t"+ovdist[i]);
+			
+			
+			try {
+			    FileWriter fileWriter = new FileWriter("/Users/juanitapuentes/Desktop/Decimo Semestre/Algoritmos Biologia Computacional/Tareas/Tarea2/ISIS4006/Tarea2/ReadsAnalyzer/Results/Overlap/10x/abundance_xx.txt");
+			    
+			    int [] distribution = graph.calculateAbundancesDistribution();
+				for(int i=1;i<distribution.length;i++) {
+					
+					String line = i + "\t" + distribution[i];
+					
+					//System.out.println(line);
+					
+					fileWriter.write(line + "\n");
+				}
+				
+			    fileWriter.close(); 
+			} catch (IOException e) {
+			    e.printStackTrace(); 
 			}
 			
+			
+			try {
+			    FileWriter fileWriter = new FileWriter("/Users/juanitapuentes/Desktop/Decimo Semestre/Algoritmos Biologia Computacional/Tareas/Tarea2/ISIS4006/Tarea2/ReadsAnalyzer/Results/Overlap/10x/overlapping_xx.txt");
+			    
+			    System.out.println("Overlap distribution");
+				int [] ovdist = graph.calculateOverlapDistribution();
+				for(int i=0;i<ovdist.length;i++) {
+					String line = i + "\t" + ovdist[i];
+					//System.out.println(line);
+					fileWriter.write(line + "\n");
+				}
+				
+			    fileWriter.close(); 
+			} catch (IOException e) {
+			    e.printStackTrace(); 
+			}
+				
+			
 			//Assemble sequence
+			
+			System.out.println("Time building overlap graph(ms): "+time);
+			System.out.println("Number of distinct sequences: "+sequencesList.size());
+			
 			time = System.currentTimeMillis();
 			String assembly = graph.getAssembly();
 			time = System.currentTimeMillis()-time;
@@ -82,12 +122,56 @@ public class ReadsAnalyzerExample {
 			//Calculate statistics
 			Set<String> kmers = kmersTable.getDistinctKmers();
 			System.out.println("Total number of k-mers: "+kmers.size());
-			for(String kmer:kmers) System.out.println("The k-mer "+kmer+" is present "+kmersTable.getAbundance(kmer)+" times");
-			System.out.println("K-mer distribution");
-			int [] distribution = kmersTable.calculateAbundancesDistribution();
-			for(int i=1;i<distribution.length;i++) {
-				System.out.println(""+i+"\t"+distribution[i]);
+			
+			
+			try {
+			    FileWriter fileWriter = new FileWriter("/Users/juanitapuentes/Desktop/Decimo Semestre/Algoritmos Biologia Computacional/Tareas/Tarea2/ISIS4006/Tarea2/ReadsAnalyzer/Results/kmers/100x/kmer_data_75.txt");
+			    
+			    System.out.println("Abundance distribution");
+				
+			    
+				for(String kmer:kmers) {
+					
+					
+					int abundance = kmersTable.getAbundance(kmer);
+					
+					String line = kmer + "\t" + abundance;
+					
+					//System.out.println("The k-mer "+kmer+" is present "+abundance+" times");
+					
+					fileWriter.write(line + "\n");
+				}
+				
+			    fileWriter.close(); 
+			} catch (IOException e) {
+			    e.printStackTrace(); 
 			}
+			
+			
+			try {
+			    FileWriter fileWriter = new FileWriter("/Users/juanitapuentes/Desktop/Decimo Semestre/Algoritmos Biologia Computacional/Tareas/Tarea2/ISIS4006/Tarea2/ReadsAnalyzer/Results/kmers/100x/kmer_distribution_75.txt");
+			    
+			    System.out.println("Distribution");
+				
+			    int [] distribution = kmersTable.calculateAbundancesDistribution();
+			    
+				for(int i=1;i<distribution.length;i++) {
+					
+					
+					String line = i + "\t" + distribution[i];
+					
+					//System.out.println(line);
+					
+	                fileWriter.write(line + "\n");
+					
+
+				}
+				
+			    fileWriter.close(); 
+			} catch (IOException e) {
+			    e.printStackTrace(); 
+			}
+
 		}
 	}
 	/**
