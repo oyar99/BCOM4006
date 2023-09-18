@@ -144,14 +144,24 @@ public class OverlapGraph implements RawReadProcessor {
 		for (int abundance : this.readCounts.values()) {
 			abundancesTable.put(abundance, abundancesTable.getOrDefault(abundance, 0) + 1);
 			maxAbundance = Math.max(abundance, maxAbundance);
+			
 		}
 
 		int[] abundances = new int[maxAbundance + 1];
+		
+		int suma = 0;
 
 		for (int i = 0; i < abundances.length; ++i) {
 			abundances[i] = abundancesTable.getOrDefault(i, 0);
+			suma+=abundancesTable.getOrDefault(i, 0);
 		}
 
+		double mean = (double) suma / abundances.length;
+		
+		double redondearMedia = Double.parseDouble(String.format("%.3f", mean));
+		
+		System.out.println("La abundancia media es: "+ redondearMedia);
+		
 		return abundances;
 	}
 
@@ -177,9 +187,19 @@ public class OverlapGraph implements RawReadProcessor {
 
 		int[] successors = new int[maxSuccessors + 1];
 
+		int sum = 0;
+		
 		for (int i = 0; i < successors.length; ++i) {
 			successors[i] = successorsTable.getOrDefault(i, 0);
+			sum += successorsTable.getOrDefault(i, 0);
 		}
+		
+		
+		double mean = (double) sum / successors.length;
+		
+		double redondearMedia = Double.parseDouble(String.format("%.3f", mean));
+		
+		System.out.println("Los sucesores promedio son: "+ redondearMedia);
 
 		return successors;
 	}

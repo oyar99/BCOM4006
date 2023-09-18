@@ -86,6 +86,8 @@ public class KmersTable implements RawReadProcessor {
 		// First, let us determine the maximum abundance for a k-mer in the k-mers table
 		// so we can then create a fixed-length array
 		int maxAbundance = Integer.MIN_VALUE;
+		
+		int sum = 0;
 
 		// We need a reverse hash table to determine for a given abundance the number of
 		// k-mers that appear that many times in the original sequence.
@@ -94,8 +96,15 @@ public class KmersTable implements RawReadProcessor {
 		for (int abundance : this.kmersTable.values()) {
 			abundancesTable.put(abundance, abundancesTable.getOrDefault(abundance, 0) + 1);
 			maxAbundance = Math.max(abundance, maxAbundance);
+			sum += abundance;
 		}
-
+		
+		double mean = (double) sum / kmersTable.size();
+		
+		double redondearMedia = Double.parseDouble(String.format("%.3f", mean));
+		
+		System.out.println("La abundancia media es:"+ redondearMedia);
+		
 		int[] abundances = new int[maxAbundance + 1];
 
 		for (int i = 0; i < abundances.length; ++i) {
