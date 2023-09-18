@@ -27,7 +27,7 @@ public class SimpleReadsSimulator {
 	public static void main(String[] args) throws Exception {
 		String filename = "C:\\Users\\laura\\OneDrive\\Documentos\\GitHub\\ALGORITMOS\\ISIS4006\\Tarea2\\ReadsAnalyzer\\data\\HS_MIT.fasta";
 		//int readLength = Integer.parseInt(args[1]);
-		int readLength = 50;
+		int readLength = 100;
 		//int numReads = Integer.parseInt(args[2]);
 		int numReads = 20;
 		//String outFile = args[3];

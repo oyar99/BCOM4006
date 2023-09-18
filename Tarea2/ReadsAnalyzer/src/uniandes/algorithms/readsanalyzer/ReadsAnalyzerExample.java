@@ -27,10 +27,12 @@ public class ReadsAnalyzerExample {
 			System.err.println("Command and input file are mandatory parameters");
 			return;
 		}
-		int kmerSize = 25;
-		int minOverlap = 10;
+		int kmerSize = 75;
+		int minOverlap = 1;
 		String command = args[0];
+		//String command = "Overlap";
 		String fastqFilename = args[1];
+		//String fastqFilename = "C:\\Users\\laura\\OneDrive\\Documentos\\GitHub\\ALGORITMOS\\ISIS4006\\Tarea2\\ReadsAnalyzer\\data\\HS_MIT_100_20_errorRate_out.fastq";
 		if(COMMAND_OVERLAP.equals(command)&& args.length>2) {
 			minOverlap = Integer.parseInt(args[2]);
 		} else if(COMMAND_KMERS.equals(command) && args.length>2) {
