@@ -31,9 +31,6 @@ Se debe ejecutar el siguiente comando.
 
 Donde los argumentos son:
 
-
-# ¿Cómo correr el código?
-
 `args[0]` **->** Comando a ejecutar. Puede ser **"Overlap"** o **"Kmers"**. 
 
 `args[1]` **->** Path al archivo Fastq con las lecturas a procesar. 
