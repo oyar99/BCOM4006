@@ -39,6 +39,14 @@ public class SuffixArray {
     }
 
     /**
+     * 
+     * @return Suffix array corresponding to this sequence
+     */
+    public int[] getSuffixArray() {
+        return this.sa;
+    }
+
+    /**
      * Uses binary search to find an occurrence of query in the sequence
      * 
      * @param query String that we will search in the sequence
