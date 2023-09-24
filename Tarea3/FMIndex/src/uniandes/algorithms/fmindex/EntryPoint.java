@@ -71,7 +71,7 @@ public class EntryPoint {
                 }
 
                 fileWriter.append("Read:" + read.getSequenceString() +
-                        " found at position " + startIndex + "\n");
+                        " found at position: " + startIndex + "\n");
             }
 
             fileWriter.close();
@@ -90,7 +90,7 @@ public class EntryPoint {
                 }
 
                 fileWriter.append("Read:" + read.getSequenceString() +
-                        " found at positions: ");
+                        " found at position: ");
 
                 int count = 0;
                 for (int i: indices) {

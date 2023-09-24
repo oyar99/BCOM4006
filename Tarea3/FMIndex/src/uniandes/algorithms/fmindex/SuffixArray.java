@@ -27,7 +27,7 @@ public class SuffixArray {
             suffixes[i] = new Suffix(sequence.substring(i), i);
         }
 
-        // Sort suffixes 
+        // Sort suffixes
         Arrays.sort(suffixes, (a, b) -> a.suffix.compareTo(b.suffix));
 
         // Create suffix array
@@ -52,7 +52,7 @@ public class SuffixArray {
      * @param query String that we will search in the sequence
      * 
      * @return the index of an occurrence of query in the sequence. -1, if no match
-     * is found.
+     *         is found.
      */
     public int search(String query) {
         int l = 0;
@@ -61,14 +61,14 @@ public class SuffixArray {
         while (l < r) {
             int m = (l + r) / 2;
 
-            String suffix = this.sequence.substring(this.sa[m]);
+            String suffix = this.sequence.substring(
+                    this.sa[m], Math.min(query.length() + this.sa[m], this.sequence.length()));
 
             boolean foundQuery = true;
 
             for (int i = 0; i < query.length(); ++i) {
-                if (i >= suffix.length() 
-                    || suffix.charAt(i) < query.charAt(i)
-                ) {
+                if (i >= suffix.length()
+                        || suffix.charAt(i) < query.charAt(i)) {
                     // This suffix is lexicographically smaller than query
                     l = m + 1;
                     foundQuery = false;

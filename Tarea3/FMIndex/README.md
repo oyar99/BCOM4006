@@ -11,7 +11,7 @@
 
 # ¿Cómo correr el código?
 
-Para ejecutar el script de *FMIndex.java*
+Para ejecutar el script de *EntryPoint.java*
 
 Se debe ejecutar el siguiente comando.
 
@@ -32,3 +32,6 @@ Donde los argumentos son:
 `args[2]` **->** Comando a ejecutar. Puede ser **"SuffixArray"** o **"FM"**. Ambos producen el mismo resultado, pero usando algoritmos diferentes.
 
 `args[3]`  **->**  Ruta donde se guardaran los indices donde se encontraron las lecturas en las secuencias.
+
+Para las pruebas realizadas, se puede encontrar el conjunto de datos utilizado en la carpeta data segregado por lecturas y secuencias. Los resultados obtenidos pueden ser referenciados en la
+carpeta results, donde el sufijo FM y SA indican que se obtuvo ese archivo de salida al correr el programa con el comando `FM` y `SuffixArray` respectivamente
