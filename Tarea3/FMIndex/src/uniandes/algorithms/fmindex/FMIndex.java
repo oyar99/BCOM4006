@@ -100,7 +100,7 @@ public class FMIndex {
 				return new int[0];
 			}
 
-			int l = this.tallyIndices[fl][j];
+			int l = this.tallyIndices[fr][j] - rangeLength + 1;
 
 			// Last to First Mapping
 			fl = L2F(c, l);

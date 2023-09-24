@@ -64,6 +64,12 @@ public class EntryPoint {
             for (RawRead read: reads) {
                 int startIndex = sa.search(read.getSequenceString());
 
+                if (startIndex == -1) {
+                    fileWriter.append("Read:" + read.getSequenceString() +
+                        " not found.\n");
+                    continue;
+                }
+
                 fileWriter.append("Read:" + read.getSequenceString() +
                         " found at position " + startIndex + "\n");
             }
@@ -77,6 +83,12 @@ public class EntryPoint {
             for (RawRead read: reads) {
                 int[] indices = fmIndex.search(read.getSequenceString());
 
+                if (indices.length == 0) {
+                    fileWriter.append("Read:" + read.getSequenceString() +
+                        " not found.\n");
+                    continue;
+                }
+
                 fileWriter.append("Read:" + read.getSequenceString() +
                         " found at positions: ");
 
@@ -86,7 +98,7 @@ public class EntryPoint {
                     fileWriter.append(String.valueOf(i));
 
                     if (count != indices.length) {
-                        fileWriter.append("- ");
+                        fileWriter.append(" - ");
                     }
                 }
 
