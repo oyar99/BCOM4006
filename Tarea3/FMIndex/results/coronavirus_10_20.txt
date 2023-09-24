@@ -1,0 +1,10 @@
+Read:TACATTCTTTAAGAGTTTGT found at position 3740
+Read:GTCTTTTGTACTGTAAATGC found at position 17301
+Read:AATGTCTGGTAAAGGCCAAC found at position 28971
+Read:TAATAGATACTTAGCTCTTT found at position 9876
+Read:CTTAAGGGTGTAGAAGCTGT found at position 5548
+Read:GGAACCTGAGTTTTATGAGG found at position 16187
+Read:GCAATATGGCAGTTTTTGTA found at position 23823
+Read:AATTCCCTCGAGGACAAGGC found at position 28466
+Read:CTAGAGTATTAGGTTTGAAA found at position 6605
+Read:TAATTAGAGGTGATGAAGTC found at position 22763

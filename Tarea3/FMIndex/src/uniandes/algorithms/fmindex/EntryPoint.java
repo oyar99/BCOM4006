@@ -65,7 +65,8 @@ public class EntryPoint {
             for (RawRead read : reads) {
                 int startIndex = sa.search(read.getSequenceString());
 
-                fileWriter.append("Read:" + read.getSequenceString() + " found at position " + startIndex);
+                fileWriter.append("Read:" + read.getSequenceString() +
+                        " found at position " + startIndex + "\n");
             }
 
             fileWriter.close();
@@ -80,9 +81,9 @@ public class EntryPoint {
     /**
      * Process the reads stored in the given fastq file
      * 
-     * @param filename  Name of the file to load. The file can be gzip compressed
-     *                  but then the
-     *                  extension must finish with ".gz"
+     * @param filename Name of the file to load. The file can be gzip compressed
+     *                 but then the
+     *                 extension must finish with ".gz"
      * 
      * @return Array of reads processed from the fastq file
      * 
