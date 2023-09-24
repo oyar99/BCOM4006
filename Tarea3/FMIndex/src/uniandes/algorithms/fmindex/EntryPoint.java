@@ -50,19 +50,18 @@ public class EntryPoint {
         QualifiedSequence seq = sequences.get(0);
         String sequence = seq.getCharacters().toString();
 
+        // Read FASTQ file with reads information
+        ArrayList<RawRead> reads = processFastq(fastQFile);
+
+        // For each read, we will search it in the original sequence and write the index
+        // of the starting position of the matches to the output file
+        FileWriter fileWriter = new FileWriter(new File(outputPath));
+
         if (command.equals("SuffixArray")) {
             // Construct suffix array
             SuffixArray sa = new SuffixArray(sequence);
 
-            // Read FASTQ file with reads information
-            ArrayList<RawRead> reads = processFastq(fastQFile);
-
-            // For each read, search it in the original sequence and write the index
-            // of the starting position of the match to the output file
-
-            FileWriter fileWriter = new FileWriter(new File(outputPath));
-
-            for (RawRead read : reads) {
+            for (RawRead read: reads) {
                 int startIndex = sa.search(read.getSequenceString());
 
                 fileWriter.append("Read:" + read.getSequenceString() +
@@ -72,7 +71,29 @@ public class EntryPoint {
             fileWriter.close();
 
         } else if (command.equals("FM")) {
+            // Construct FM-Index
+            FMIndex fmIndex = new FMIndex(sequence);
 
+            for (RawRead read: reads) {
+                int[] indices = fmIndex.search(read.getSequenceString());
+
+                fileWriter.append("Read:" + read.getSequenceString() +
+                        " found at positions: ");
+
+                int count = 0;
+                for (int i: indices) {
+                    ++count;
+                    fileWriter.append(String.valueOf(i));
+
+                    if (count != indices.length) {
+                        fileWriter.append("- ");
+                    }
+                }
+
+                fileWriter.append("\n");
+            }
+
+            fileWriter.close();
         } else {
             throw new Exception("The command provided is not supported.");
         }
