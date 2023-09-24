@@ -17,8 +17,8 @@ Se debe ejecutar el siguiente comando.
 
 ## Windows
 
-`java -Xmx4g -cp lib\NGSEPcore_3.2.0.jar;bin uniandes.algorithms.fmindex.FMIndex`
+`java -Xmx4g -cp lib\NGSEPcore_3.2.0.jar;bin uniandes.algorithms.fmindex.EntryPoint`
 
 ## Mac
 
-`java -Xmx4g -cp lib/NGSEPcore_3.2.0.jar;bin uniandes.algorithms.fmindex.FMIndex`
+`java -Xmx4g -cp lib/NGSEPcore_3.2.0.jar;bin uniandes.algorithms.fmindex.EntryPoint`
