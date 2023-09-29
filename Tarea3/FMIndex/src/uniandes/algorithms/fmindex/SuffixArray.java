@@ -1,6 +1,7 @@
 package uniandes.algorithms.fmindex;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class SuffixArray {
     private class Suffix {
@@ -16,7 +17,18 @@ public class SuffixArray {
     private int sa[];
     private String sequence;
 
-    public SuffixArray(String sequence) {
+    public SuffixArray(String sequence, boolean optimizeMem) {
+        if (optimizeMem) {
+            initV2(sequence);
+        } else {
+            init(sequence);
+        }
+    }
+
+    /*
+     * This init version will use O(n^2) space to store all suffixes of the given sequence
+     */
+    private void init(String sequence) {
         this.sequence = sequence;
 
         int n = sequence.length();
@@ -36,6 +48,54 @@ public class SuffixArray {
         for (int i = 0; i < n; ++i) {
             this.sa[i] = suffixes[i].pos;
         }
+    }
+
+    /*
+     * BONUS: This init version will not use additional space to explicitly store suffixes
+     * of the given sequence. 
+     */
+    private void initV2(String sequence) {
+        this.sequence = sequence;
+
+        int n = sequence.length();
+
+        // Create array with indices of starting position of all suffixes of sequence
+        Integer[] intArray = new Integer[n];
+
+        for (int i = 0; i < n; ++i) {
+            intArray[i] = i;
+        }
+
+        // Sort suffix array indices without storing additional info
+        // We use a custom comparator to determine if suffix starting
+        // at position i comes before suffix starting at position j by
+        // looking at the characters in the given sequence.
+        Arrays.sort(intArray, new Comparator<Integer>() {
+            public int compare(Integer a, Integer b) {
+                int suffixALength = n - a;
+                int suffixBLength = n - b;
+
+                for (int i = 0; i < Math.min(suffixALength, suffixBLength); ++i) {
+                    Character ca = sequence.charAt(i + a);
+                    Character cb = sequence.charAt(i + b);
+
+                    int comparisonValue = ca.compareTo(cb);
+
+                    if (comparisonValue == 0) {
+                        continue;
+                    }
+
+                    return comparisonValue;
+                }
+
+                // This will return a negative value if suffix starting at position b comes after 
+                // the other suffix. Otherwise it will return a positive value.
+                return suffixALength - suffixBLength;
+            }
+        });
+
+        // Convert from Integer array to array of primitives
+        this.sa = Arrays.stream(intArray).mapToInt(Integer::intValue).toArray();
     }
 
     /**

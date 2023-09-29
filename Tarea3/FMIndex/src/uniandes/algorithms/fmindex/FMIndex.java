@@ -11,11 +11,11 @@ public class FMIndex {
 	private Map<Integer, Character> reverseAlphabetMap; // reverseAlphabetMap[i] is the character at position i in the alphabet
 	private int [][] tallyIndices;
 
-	public FMIndex(String sequence) {
+	public FMIndex(String sequence, boolean optimizeMem) {
 		int n = sequence.length();
 		// Create suffix array for sequence: sequence$
 		String seq = sequence + "$";
-		this.suffixArray = new SuffixArray(seq);
+		this.suffixArray = new SuffixArray(seq, optimizeMem);
 		int [] sa = suffixArray.getSuffixArray();
 
 		StringBuilder bawBuilder = new StringBuilder();

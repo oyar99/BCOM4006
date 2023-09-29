@@ -1,0 +1,5 @@
+Read:A found at position: 0
+Read:AC found at position: 3
+Read:TCAC found at position: 1
+Read:U not found.
+Read:AA not found.

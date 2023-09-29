@@ -29,7 +29,7 @@ public class EntryPoint {
      *                   cannot be correctly parsed.
      */
     public static void main(String[] args) throws Exception {
-        if (args.length != 4) {
+        if (args.length < 4) {
             throw new Exception(
                     "The number arguments is not correct. We expect 3 arguments." +
                             "Please review the documentation");
@@ -38,6 +38,7 @@ public class EntryPoint {
         String fastQFile = args[1];
         String command = args[2];
         String outputPath = args[3];
+        boolean optimizeSuffixArray = args.length > 4 ? Boolean.parseBoolean(args[4]) : false;
 
         // Read Fasta file and extract first sequence to string variable
         FastaSequencesHandler handler = new FastaSequencesHandler();
@@ -59,7 +60,7 @@ public class EntryPoint {
 
         if (command.equals("SuffixArray")) {
             // Construct suffix array
-            SuffixArray sa = new SuffixArray(sequence);
+            SuffixArray sa = new SuffixArray(sequence, optimizeSuffixArray);
 
             for (RawRead read: reads) {
                 int startIndex = sa.search(read.getSequenceString());
@@ -78,7 +79,7 @@ public class EntryPoint {
 
         } else if (command.equals("FM")) {
             // Construct FM-Index
-            FMIndex fmIndex = new FMIndex(sequence);
+            FMIndex fmIndex = new FMIndex(sequence, optimizeSuffixArray);
 
             for (RawRead read: reads) {
                 int[] indices = fmIndex.search(read.getSequenceString());

@@ -1,0 +1,22 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "EntryPoint",
+            "request": "launch",
+            "mainClass": "uniandes.algorithms.fmindex.EntryPoint",
+            "projectName": "FMIndex",
+            "args": "C:\\school\\ISIS4006\\Tarea3\\FMIndex\\data\\sequences\\test.fasta C:\\school\\ISIS4006\\Tarea3\\FMIndex\\data\\reads\\test-reads.fastq SuffixArray C:\\school\\ISIS4006\\Tarea3\\FMIndex\\results\\test-SA-Bonus.txt true"
+        }
+    ]
+}
