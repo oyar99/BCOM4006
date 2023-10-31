@@ -12,7 +12,7 @@ This software was implemented and tested with [Python 3.9](https://www.python.or
 
 ## Dataset
 
-The `dataset`` folder contains the following resources.
+The `dataset` folder contains the following resources.
 
 - `sample.csv` A sample random gene expression matrix of small size.
 
