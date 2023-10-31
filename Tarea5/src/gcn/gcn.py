@@ -7,12 +7,12 @@ class GCN:
     n: int
     m: int
 
-    '''
-    Constructs a GCN from a correlation matrix.
-    For all pair of genes, there is an edge between them iff
-    their correlation is greater than or equal to t.
-    '''
     def __init__(self, M: list[list[float]], t: float):
+        '''
+        Constructs a GCN from a correlation matrix.
+        For all pair of genes, there is an edge between them iff
+        their correlation is greater than or equal to t.
+        '''
         n = len(M)
 
         self.n = n
@@ -74,10 +74,29 @@ class GCN:
                 clust_coeff[i] = 2 * neigh_degree / (degrees[i] * (degrees[i] - 1))
 
         return clust_coeff
+        
     
-    def spectral_clustering(self):
-        self.n
-    
+    def spectral_clustering(self) -> list[float]:
+        spectral = [.0 for _ in range(self.n)]
+
+        degrees = self.degrees()
+        clust_coeff = self.clustering_coefficient()
+
+        for d in range(self.n):
+            avg_clust = .0
+            k = 0
+            for i in range(self.n):
+                if degrees[i] == d:
+                    avg_clust = avg_clust + clust_coeff[i]
+                    k = k + 1
+
+            if k > 0:
+                avg_clust = avg_clust / k
+
+            spectral[d] = avg_clust
+
+        return spectral
+
     def serialize(self, labels: list[str]) -> list[list[str]]:
         M = []
 

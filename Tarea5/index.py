@@ -58,9 +58,16 @@ def main():
         utils.saveList(degrees_dist, 'degree_dist.csv')
 
         density = network.density()
+
+        utils.saveFileContent(f'Network Density: {density}', 'density.txt')
+
         clust_coeff = network.clustering_coefficient()
 
         utils.saveList(clust_coeff, 'clustering_coeff.csv', labels=genes)
+
+        spectral = network.spectral_clustering()
+
+        utils.saveList(spectral, 'spectral.csv')
 
 if __name__ == "__main__":
     main()

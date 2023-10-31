@@ -19,9 +19,17 @@ def readCoexpressionFileAsCsv(filepath: str) -> [list[list[float]], list[str]]:
 
     genes = df.iloc[:, 0].to_list()
 
-    M = df.drop(df.columns[0], axis=1).to_numpy().tolist()
+    np = df.drop(df.columns[0], axis=1).to_numpy()
+
+    # np = np[~np.all(np == 0, axis=1)]
+
+    M = np.tolist()
 
     return [M, genes]
+
+def saveFileContent(content: str, filepath: str) -> None:
+    with open(filepath, 'w') as f:
+        print(content, file=f)
 
 def saveList(L: list[float], filepath: str, labels: list[str] = None) -> None:
     df = pd.DataFrame(L, labels)
