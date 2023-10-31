@@ -28,7 +28,7 @@ class GCN:
                 if self.adj_M[i][j]:
                     self.m = self.m + 1
 
-    def degrees(self):
+    def degrees(self) -> list[int]:
         degrees = [0 for _ in range(self.n)]
         
         for i in range(len(self.adj_M)):
@@ -40,7 +40,7 @@ class GCN:
 
         return degrees
 
-    def degree_distribution(self):
+    def degree_distribution(self) -> list[int]:
         distr = [0 for _ in range(self.n)]
 
         degrees = self.degrees()
@@ -50,10 +50,10 @@ class GCN:
 
         return distr
     
-    def density(self):
+    def density(self) -> float:
         return 2 * self.m / (self.n * (self.n - 1))
 
-    def clustering_coefficient(self):
+    def clustering_coefficient(self) -> list[float]:
         clust_coeff = [.0 for _ in range(self.n)]
         degrees = self.degrees()
 
@@ -67,7 +67,11 @@ class GCN:
                         if self.adj_M[j][k] and self.adj_M[i][k]:
                             neigh_degree = neigh_degree + 1
 
-            clust_coeff[i] = 2 * neigh_degree / (degrees[i] * (degrees[i] - 1))
+            # Avoid double counting edges
+            neigh_degree = neigh_degree / 2
+
+            if degrees[i] > 1:
+                clust_coeff[i] = 2 * neigh_degree / (degrees[i] * (degrees[i] - 1))
 
         return clust_coeff
     

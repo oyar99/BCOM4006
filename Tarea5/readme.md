@@ -23,11 +23,15 @@ The `dataset` folder contains the following resources.
 Results are placed in the `results` folder. For each dataset, there will be some set of files
 prefixed with the dataset name followed by an underscore and the output file name.
 
-- `correlation.csv` This file contains the Pearson correlation matrix up to 4 decimal places
+- `correlation.csv` This file contains the Pearson correlation matrix using up to 4 decimal places
 
 - `network.csv` This file contains the network information. Each line has 2 columns that indicate gene $G_i$ is adjacent to $G_j$. This file can be used as input in other bioinformatics tools such as `Cytoscape` to visualize the graph.
 
 - `degrees.csv` This file contains the degree for each gene in the output graph.
+
+- `degree_dist.csv` This file contains the degree distribution for the network. Each line has two numbers $a$ and $b$. This means there are $b$ nodes whose degree is $a$.
+
+- `clustering_coeff.csv` This file contains the clustering coefficient for each gene.
 
 ## How to run this program?
 

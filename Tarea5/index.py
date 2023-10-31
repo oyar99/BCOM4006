@@ -53,5 +53,14 @@ def main():
 
         utils.saveList(degrees, 'degrees.csv', labels=genes)
 
+        degrees_dist = network.degree_distribution()
+
+        utils.saveList(degrees_dist, 'degree_dist.csv')
+
+        density = network.density()
+        clust_coeff = network.clustering_coefficient()
+
+        utils.saveList(clust_coeff, 'clustering_coeff.csv', labels=genes)
+
 if __name__ == "__main__":
     main()
