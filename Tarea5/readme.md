@@ -12,9 +12,22 @@ This software was implemented and tested with [Python 3.9](https://www.python.or
 
 ## Dataset
 
-The dataset folder contains the following resources.
+The `dataset`` folder contains the following resources.
+
+- `sample.csv` A sample random gene expression matrix of small size.
 
 - `LiverFemale3600.csv` A microarray result for a gene expression experiment on female mouse liver cells.
+
+## Results
+
+Results are placed in the `results` folder. For each dataset, there will be some set of files
+prefixed with the dataset name followed by an underscore and the output file name.
+
+- `correlation.csv` This file contains the Pearson correlation matrix up to 4 decimal places
+
+- `network.csv` This file contains the network information. Each line has 2 columns that indicate gene $G_i$ is adjacent to $G_j$. This file can be used as input in other bioinformatics tools such as `Cytoscape` to visualize the graph.
+
+- `degrees.csv` This file contains the degree for each gene in the output graph.
 
 ## How to run this program?
 
