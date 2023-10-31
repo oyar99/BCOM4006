@@ -14,7 +14,7 @@ This software was implemented and tested with [Python 3.9](https://www.python.or
 
 The dataset folder contains the following resources.
 
-- `LiverFemale3600.csv`: A microarray result for a gene expression experiment on female mouse liver cells.
+- `LiverFemale3600.csv` A microarray result for a gene expression experiment on female mouse liver cells.
 
 ## How to run this program?
 
