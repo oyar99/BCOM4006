@@ -50,6 +50,30 @@ class GCN:
 
         return distr
     
+    def density(self):
+        return 2 * self.m / (self.n * (self.n - 1))
+
+    def clustering_coefficient(self):
+        clust_coeff = [.0 for _ in range(self.n)]
+        degrees = self.degrees()
+
+        for i in range(self.n):
+            # Number of adjacent nodes of i that 
+            # are connected between other adjacent nodes of i
+            neigh_degree = 0
+            for j in range(self.n):
+                if self.adj_M[i][j]:
+                    for k in range(self.n):
+                        if self.adj_M[j][k] and self.adj_M[i][k]:
+                            neigh_degree = neigh_degree + 1
+
+            clust_coeff[i] = neigh_degree / degrees[i]
+
+        return clust_coeff
+    
+    def spectral_clustering(self):
+        self.n
+    
     def serialize(self, labels: list[str]) -> list[list[str]]:
         M = []
 
