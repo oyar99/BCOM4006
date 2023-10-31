@@ -15,7 +15,7 @@ def readCoexpressionFileAsCsv(filepath: str) -> [list[list[float]], list[str]]:
     df = pd.read_csv(filepath, usecols=[i for i in cols if i not in drop_cols])
 
     if len(df.columns) == 0:
-        return [df, []]
+        return [[], []]
 
     genes = df.iloc[:, 0].to_list()
 
