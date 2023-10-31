@@ -67,7 +67,7 @@ class GCN:
                         if self.adj_M[j][k] and self.adj_M[i][k]:
                             neigh_degree = neigh_degree + 1
 
-            clust_coeff[i] = neigh_degree / degrees[i]
+            clust_coeff[i] = 2 * neigh_degree / (degrees[i] * (degrees[i] - 1))
 
         return clust_coeff
     
