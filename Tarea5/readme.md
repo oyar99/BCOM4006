@@ -91,4 +91,4 @@ Other optional parameters are
 
 - `--correlation` will output the correlation matrix.
 - `--analysis` will output a set of files that can be used for further analysis. See results section for more details.
-- `threshold` can be used to change the value used to determine whether two genes are connected. It should be a value between 0 and 1.
+- `--threshold` can be used to change the value used to determine whether two genes are connected. It should be a value between 0 and 1.
