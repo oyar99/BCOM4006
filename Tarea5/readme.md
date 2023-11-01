@@ -31,7 +31,7 @@ prefixed with the dataset name followed by an underscore and the output file nam
 
 - `degree_dist.csv` This file contains the degree distribution for the network. Each line has two numbers $a$ and $b$. This means there are $b$ nodes whose degree is $a$.
 
-- `density.txt` This file contains the a line describing the density of the graph.
+- `density.txt` This file contains a line describing the density of the graph.
 
 - `clustering_coeff.csv` This file contains the clustering coefficient for each gene.
 
