@@ -31,7 +31,11 @@ prefixed with the dataset name followed by an underscore and the output file nam
 
 - `degree_dist.csv` This file contains the degree distribution for the network. Each line has two numbers $a$ and $b$. This means there are $b$ nodes whose degree is $a$.
 
+- `density.txt` This file contains the a line describing the density of the graph.
+
 - `clustering_coeff.csv` This file contains the clustering coefficient for each gene.
+
+- `spectral.csv` This file contains the spectral clustering for the network. Each line has two numbers $a$ and $b$. $b$ corresponds to the average spectral clustering for all nodes with degree $a$.
 
 ## How to run this program?
 
@@ -74,3 +78,17 @@ On Windows, run:
 ```sh
 pip install -r requirements.txt
 ```
+
+- Run the program
+
+```sh
+python .\index.py --input dataset/sample.csv --correlation --analysis
+```
+
+The program receives a required parameter `--input`. This should be the path of the gene expression matrix.
+
+Other optional parameters are
+
+- `--correlation` will output the correlation matrix.
+- `--analysis` will output a set of files that can be used for further analysis. See results section for more details.
+- `threshold` can be used to change the value used to determine whether two genes are connected. It should be a value between 0 and 1.

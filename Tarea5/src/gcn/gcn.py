@@ -28,6 +28,9 @@ class GCN:
                 if self.adj_M[i][j]:
                     self.m = self.m + 1
 
+        # Avoid double counting edges
+        self.m = self.m / 2
+
     def degrees(self) -> list[int]:
         degrees = [0 for _ in range(self.n)]
         

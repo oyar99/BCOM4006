@@ -8,7 +8,7 @@
             "program": "${file}",
             "args": [
                 "--input", 
-                "dataset/sample.csv",
+                "dataset/Sample.csv",
                 "--analysis"
             ]
         }

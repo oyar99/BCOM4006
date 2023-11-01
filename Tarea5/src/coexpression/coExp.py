@@ -36,11 +36,11 @@ def std(x: list[float]) -> float:
 
     return (s/(n-1)) ** .5
 
-def pearsonCorrelation(x: list[float], y: list[float]) -> float:
+def pearsonCorrelation(x: list[float], y: list[float], stdX: float, stdY: float) -> float:
     if (len(x) != len(y)):
         return .0
 
-    return covariance(x, y)/(std(x) * std(y))
+    return covariance(x, y)/(stdX * stdY)
 
 def correlationM(M: list[list[float]]) -> list[list[float]]:
     '''
@@ -55,8 +55,18 @@ def correlationM(M: list[list[float]]) -> list[list[float]]:
 
     CM = [[0 for _ in range(m)] for _ in range(m)]
 
+    std_T = [0 for _ in range(m)]
+
+    for i in range(m):
+        std_T[i] = std(M[i])
+
     for i in range(m):
         for j in range(m):
-            CM[i][j] = round(pearsonCorrelation(M[i], M[j]), 4)
+            if j < i:
+                CM[i][j] = CM[j][i]
+            elif i == j:
+                CM[i][j] = 1.0
+            else:
+                CM[i][j] = round(pearsonCorrelation(M[i], M[j], std_T[i], std_T[j]), 4)
 
     return CM

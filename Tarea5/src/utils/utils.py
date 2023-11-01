@@ -21,8 +21,6 @@ def readCoexpressionFileAsCsv(filepath: str) -> [list[list[float]], list[str]]:
 
     np = df.drop(df.columns[0], axis=1).to_numpy()
 
-    # np = np[~np.all(np == 0, axis=1)]
-
     M = np.tolist()
 
     return [M, genes]
