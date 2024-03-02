@@ -1,4 +1,4 @@
-# ISIS4006
+# BCOM4006
 
 Assignments for the course **Algorithms for computational biology** at Universidad de Los Andes.
 
